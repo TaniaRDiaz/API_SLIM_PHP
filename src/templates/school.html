@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block main%}
+<div class="card">
+  <div class="card-body">
+    <form method="post">
+      <div class="form-group">
+        <label for="code">Código</label>
+        <input
+          type="text"
+          value=""
+          class="form-control"
+          placeholder="Código"
+          name="code"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Escuela de Jutiapa</label>
+        <input
+          type="text"
+          value=""
+          class="form-control"
+          placeholder="Escuela"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Dirección</label>
+        <input
+          type="text"
+          value=""
+          class="form-control"
+          placeholder="Escuelas"
+          name="address"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Tipo de escuela</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="type"
+        >
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Nivel</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="level"
+        >
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Municipio</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="muni"
+        >
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success mt-2">Agregar</button>
+    </form>
+  </div>
+</div>
+<h4>Tabla</h4>
+{% endblock %}
