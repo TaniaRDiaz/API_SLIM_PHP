@@ -42,26 +42,32 @@ class TypSchCtrl
     function newTypSch(Request $req, Response $res, array $args)
     {
         $body = json_decode($req->getBody());
-        //$body->estado="Guardado";
-        $res->getBody()->write(json_encode($body));
+        $vals = "'$body->NameTypeSchool'";
+        $req =  TypSchModel::new(TypSchModel::$cols, $vals);
+        $res->getBody()->write(json_encode($req));
         return $res
-            ->withHeader('Content-Type', 'Application/json')
+            ->withHeader('Content-Type', 'application/json')
             ->withStatus(200);
     }
     function updateTypSch(Request $req, Response $res, array $args)
     {
         $id = $args['id'];
         $body = json_decode($req->getBody());
-        $body->id = $id;
-        $res->getBody()->write(json_encode($body));
+        $vals = $body->NameTypeSchool;
+        $colsval =TypSchModel::dataput($vals);
+        $req= TypSchModel::put($colsval, $id);
+        $res->getBody()->write(json_encode($req));
         return $res
-            ->withHeader('Content-Type', 'Application/json')
-            ->withStatus(200);
+        ->withHeader('Content-Type', 'application/json')
+        ->withStatus(200);
     }
     function delTypSch(Request $req, Response $res, array $args)
     {
         $id = $args['id'];
-        $res->getBody()->write('Se ha eliminado el id  ' . $id);
-        return $res;
+        $req= TypSchModel::delete($id);
+        $res->getBody()->write(json_encode($req) );
+        return $res            
+            ->withHeader('Content-Type', 'Application/json')
+            ->withStatus(200);
     }
 }

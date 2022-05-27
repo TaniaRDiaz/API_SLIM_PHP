@@ -43,7 +43,7 @@ class MuniCtrl
     function newMuni(Request $req, Response $res, array $args)
     {
         $body = json_decode($req->getBody());
-        $vals = $body->MuniName;
+        $vals = "'$body->MuniName'";
         $req =  MuniModel::new(MuniModel::$cols, $vals);
         $res->getBody()->write(json_encode($req));
         return $res
