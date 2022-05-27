@@ -68,7 +68,7 @@ class MysqlModel extends dbconn
             $stmt  = $aux->pdo->prepare($query_sql);
             $stmt ->execute();         
             $response = "Record deleted successfully";
-
+            $aux = null;
         } catch (PDOException $e) {
             $response = $response= array('message' => $e->getMessage()); 
         }
@@ -81,7 +81,7 @@ class MysqlModel extends dbconn
             $stmt  = $aux->pdo->prepare($query_sql);
             $stmt ->execute();         
             $resp = "Insert successfully";
-
+            $aux = null;
         } catch (PDOException $e) {
             $resp ="Error: " . $e->getMessage();
              
@@ -94,7 +94,7 @@ class MysqlModel extends dbconn
             $stmt  = $aux->pdo->prepare($query_sql);
             $stmt ->execute();         
             $resp = "update successfully";
-
+            $aux = null;
         } catch (PDOException $e) {
             $resp ="Error: " . $e->getMessage();
              

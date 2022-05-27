@@ -56,10 +56,18 @@ class SchoolCtrl
             ->withHeader('Content-Type', 'application/json')
             ->withStatus(200);
     }
+    
     function updateSch(Request $req, Response $res, array $args)
     {
         $id = $args['id'];
-        $req = SchoolModel::put(SchoolModel::$colsval, $id);
+        $body = json_decode($req->getBody());
+        $name = $body->NameSchool;
+        $address = $body->SchoolAddress;
+        $tsch = $body->IdTypeSchool_S_Fk;
+        $edlevel = $body->IdEduLevel_S_Fk;
+        $muni = $body->IdMuni_S_Fk;
+        $colsval = SchoolModel::dataput($name,$address,$tsch,$edlevel,$muni);
+        $req = SchoolModel::put($colsval, $id);
         $res->getBody()->write(json_encode($req));
         return $res
             ->withHeader('Content-Type', 'application/json')

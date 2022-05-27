@@ -1,12 +1,23 @@
 <?php namespace App\Models;
+
 use App\Models\MysqlModel;
 
-class SchoolModel extends MysqlModel{
-   
+class SchoolModel extends MysqlModel
+{
     static $tabla = 'schools';
     static $id = 'IdSchool_Pk';
-    static $cols = "SchoolCode,NameSchool, SchoolAddress, IdTypeSchool_S_Fk, IdEduLevel_S_Fk,IdMuni_S_Fk";
-    static $vals = "10000, 'EORM','Las Tunas I', 1, 1, 1";
-    static $colsval ="SchoolCode=01000101,NameSchool='Parvulos III', SchoolAddress='TUNAS 2' , 
-    IdTypeSchool_S_Fk=1 , IdEduLevel_S_Fk=1,IdMuni_S_Fk=1";
+    private const code = 'SchoolCode';
+    private const namesch = 'NameSchool';
+    private const addre = 'SchoolAddress';
+    private const idtsch = 'IdTypeSchool_S_Fk';
+    private const idlevel = 'IdEduLevel_S_Fk';
+    private const idmuni = 'IdMuni_S_Fk';
+
+    static $cols = self::code . "," . self::namesch . "," . self::addre . "," . self::idtsch . "," . self::idlevel . "," . self::idmuni;
+
+    static function dataput($name, $address, $tsch, $edlevel, $muni)
+    {
+        $colsval = self::namesch . "='$name'," . self::addre . "='$address'," . self::idtsch . "='$tsch'," . self::idlevel . "='$edlevel'," . self::idmuni . "='$muni'";
+        return $colsval;
+    }
 }

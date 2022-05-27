@@ -6,5 +6,12 @@ class EduLevelModel extends MysqlModel
 {
     static $tabla = 'educational_levels';
     static $id = 'IdEduLevel_Pk';
-    static $cols = 'NameEduLevel';
+    private const namelevel = 'NameEduLevel';
+    static $cols = self::namelevel;
+
+    static function dataput($name)
+    {
+        $colsval = self::namelevel . "='$name'";
+        return $colsval;
+    }
 }

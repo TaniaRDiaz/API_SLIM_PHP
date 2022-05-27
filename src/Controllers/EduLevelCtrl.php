@@ -41,8 +41,8 @@ class EduLevelCtrl
     function delEduLevl(Request $req, Response $res, array $args)
     {
         $id = $args['id'];
-        $levels=  LevelModel::delete($id);
-        $res->getBody()->write(json_encode($levels));
+        $req=  LevelModel::delete($id);
+        $res->getBody()->write(json_encode($req));
         return $res
         ->withHeader('Content-Type', 'application/json')
         ->withStatus(200);
@@ -59,15 +59,17 @@ class EduLevelCtrl
         ->withHeader('Content-Type', 'application/json')
         ->withStatus(200);   
     }
-/* 
+ 
     function updateEduLevl(Request $req, Response $res, array $args)
     {
         $id = $args['id'];
         $body = json_decode($req->getBody());
-        $body->id = $id;
-        $res->getBody()->write(json_encode($body));
+        $values= $body->NameEduLevel;
+        $colsval=  LevelModel::dataput($values); 
+        $req= LevelModel::put($colsval,$id);
+        $res->getBody()->write(json_encode($req));
         return $res
-            ->withHeader('Content-Type', 'Application/json')
-            ->withStatus(200);
-    }*/
+        ->withHeader('Content-Type', 'application/json')
+        ->withStatus(200);  
+    }
 }

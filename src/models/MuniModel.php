@@ -6,6 +6,12 @@ class MuniModel extends MysqlModel
 {
     static $id = 'IdMuni_Pk';
     static $tabla = 'municipalities';
-    static $cols = 'MuniName';
+    private const name = 'MuniName';
+    static $cols = self::name;
     
+    static function dataput($name)
+    {
+        $colsval = self::name . "'$name'";
+        return $colsval;
+    }
 }
