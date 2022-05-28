@@ -12,6 +12,5 @@ $app->add(TwigMiddleware::create($app, $twig));
 $app->setBasePath('/proyectos_slim');
 
 require 'routes/routes.php';
-require 'config/config.php';
 
 $app->run();
